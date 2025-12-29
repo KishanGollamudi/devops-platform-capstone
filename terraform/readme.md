@@ -69,3 +69,138 @@ terraform/
     ├── compute-nexus/
     ├── compute-docker/
     └── compute-ansible/
+````
+
+Each module is self-contained with:
+
+* `main.tf`
+* `variables.tf`
+* `outputs.tf`
+
+---
+
+## 🔧 Key Design Decisions
+
+### Why Terraform?
+
+* Infrastructure as Code (IaC)
+* Version-controlled infrastructure
+* Safe, repeatable deployments
+* Clear dependency management
+
+### Why Separate Modules?
+
+* Reusability
+* Maintainability
+* Clean abstraction boundaries
+* Easy scaling
+
+### Why No Software Installation in Phase 1?
+
+* Terraform handles **infrastructure only**
+* Configuration is delegated to Ansible (Phase 2)
+* Prevents tight coupling between infra and config
+
+---
+
+## 🚀 How to Use
+
+### Initialize Terraform
+
+```bash
+terraform init
+```
+
+### Validate Configuration
+
+```bash
+terraform validate
+```
+
+### Review Execution Plan
+
+```bash
+terraform plan
+```
+
+### Apply Infrastructure
+
+```bash
+terraform apply
+```
+
+### Destroy Infrastructure (Cost Safety)
+
+```bash
+terraform destroy
+```
+
+---
+
+## 📤 Outputs
+
+Terraform outputs provide public IPs for all servers:
+
+* Jenkins
+* SonarQube
+* Nexus
+* Docker Host
+* Ansible Control Node
+
+These outputs are later used for:
+
+* Ansible inventory
+* Documentation
+* Validation
+
+---
+
+## 🔒 Security & Git Hygiene
+
+* Terraform state files are **not committed**
+* SSH keys (`*.pem`) are ignored
+* `.terraform/` directory is ignored
+* Clean `.gitignore` enforced
+
+---
+
+## 🧭 Next Phase
+
+**Phase 2 – Configuration Management (Ansible)**:
+
+* Ansible will run from the Ansible EC2 control node
+* Install and configure Jenkins, Docker, SonarQube, and Nexus
+* No manual SSH configuration
+* Fully automated provisioning
+
+---
+
+## ✅ Status
+
+✔ Phase 1 complete
+✔ Infrastructure verified in AWS Console
+✔ Code committed to GitHub
+✔ Ready for Phase 2
+
+---
+
+## 👤 Author
+
+**Kishan Gollamudi**
+DevOps | Cloud | Infrastructure as Code
+
+````
+
+---
+
+### ✅ What You Should Do Now
+1. Save this as `README.md`
+2. Place it at **repo root** (or inside `terraform/` if you prefer)
+3. Run:
+```bash
+git add README.md
+git commit -m "Add Terraform Phase 1 documentation"
+git push
+````
+
+---
