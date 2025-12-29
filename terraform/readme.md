@@ -190,5 +190,3 @@ These outputs are later used for:
 DevOps | Cloud | Infrastructure as Code
 
 ````
-
----
